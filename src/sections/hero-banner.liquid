@@ -1,0 +1,146 @@
+{% comment %}
+
+@author jeremiah wodke <jeremiah.wodke@gmail.com>
+@since 0.0
+
+settings are long and have to be referenced multiple levels deep. 
+Let's not do that and instead alias all of the settings at the 
+top of the file.
+
+{% endcomment %}
+
+{% assign bg_image = section.settings.bg_image %}
+
+{%- assign title = section.settings.title -%}
+{%- assign title_color = section.settings.title_color -%}
+{%- assign title_font = section.settings.title_font -%}
+
+{%- assign slogan = section.settings.slogan -%}
+{%- assign slogan_color = section.settings.slogan_color -%}
+
+{% if title %}
+  <div 
+    class="banner banner-hero lazyload" 
+    data-bgset="{% include 'responsive-bg-image', image: bg_image %}">
+
+      <h1 
+        class="headline headline-title"
+        style="
+          color: {{title_color}}; 
+          font-family: {{ title_font }}">
+        {{ title }}
+      </h1>
+
+      <h3 
+        class="headline headline-slogan"
+        style="
+          color: {{ slogan_color }};
+          font-family: {{ slogan_font }}">
+        {{ slogan }}
+      </h3>
+      
+      {% for block in section.blocks %}
+
+        {%- assign url = block.settings.url -%}
+        {%- assign text = block.settings.text -%}
+        {%- assign color = block.settings.color -%}
+
+        {% if text and url %}
+          <a href="{{ url }}" 
+             class="btn btn-hero" 
+             style="background-color: {{ color }}">
+
+            {{ text }}
+
+          </a>
+        {% endif %}
+
+      {% endfor %}
+
+  </div><!-- banner banner-hero -->
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Hero banner",
+    "settings": [
+      {
+         "type": "font_picker",
+         "label":"title_font",
+         "id": "title_font",
+         "default": "helvetica_n4"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title color",
+        "default": "#ffffff"
+      },
+      {
+         "type": "font_picker",
+         "label": "slogan_font",
+         "id": "slogan_font",
+         "default": "helvetica_n4"
+      },
+      {
+        "type": "text",
+        "id": "slogan",
+        "label": "slogan",
+        "default": "add your special slogan here"
+      },
+      {
+        "type": "color",
+        "id": "slogan_color",
+        "label": "Slogan color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background_image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "buttons",
+        "name": "Buttons",
+        "settings": [
+          {
+            "id": "text",
+            "type": "text",
+            "label": "Button text"
+          },
+          {
+            "id": "url",
+            "type": "url",
+            "label": "Button link"
+          },
+          {
+            "id": "color",
+            "type": "color",
+            "label": "Button color",
+            "default": "#333333"
+          }
+        ]
+      }
+    ],
+    "presets": [ 
+      {
+        "name": "Hero banner",
+        "category": "Banners",
+        "settings": {
+          "title_color": "#ffffff",
+          "title_font": "helvetica_n4",
+          "slogan_color": "#ffffff",
+          "slogan_font": "helvetica_n4"
+        }
+      }
+    ]
+  }
+{% endschema %}
