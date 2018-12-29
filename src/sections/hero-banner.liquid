@@ -9,11 +9,16 @@ top of the file.
 
 {% endcomment %}
 
-{% assign bg_image = section.settings.bg_image %}
+<style>
+  {{ section.settings.title_font | font_face }}
+  {{ section.settings.slogan_font | font_face }}
+</style>
+
+{%- assign title_font = section.settings.title_font.family -%}
+{%- assign slogan_font = section.settings.slogan_font.family -%}
 
 {%- assign title = section.settings.title -%}
 {%- assign title_color = section.settings.title_color -%}
-{%- assign title_font = section.settings.title_font -%}
 
 {%- assign slogan = section.settings.slogan -%}
 {%- assign slogan_color = section.settings.slogan_color -%}
@@ -21,7 +26,8 @@ top of the file.
 {% if title %}
   <div 
     class="banner banner-hero lazyload" 
-    data-bgset="{% include 'responsive-bg-image', image: bg_image %}">
+    style="background: url({{ section.settings.bg_image | img_url }})"
+    data-bgset="{% include 'responsive-bg-image', image: section.settings.bg_image %}">
 
       <h1 
         class="headline headline-title"
@@ -66,14 +72,14 @@ top of the file.
     "settings": [
       {
          "type": "font_picker",
-         "label":"title_font",
+         "label":"Heading Font",
          "id": "title_font",
          "default": "helvetica_n4"
       },
       {
         "type": "text",
         "id": "title",
-        "label": "Heading",
+        "label": "Heading Fo",
         "default": "Title"
       },
       {
@@ -84,7 +90,7 @@ top of the file.
       },
       {
          "type": "font_picker",
-         "label": "slogan_font",
+         "label": "Slogan Font",
          "id": "slogan_font",
          "default": "helvetica_n4"
       },
