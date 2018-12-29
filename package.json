@@ -35,6 +35,7 @@
     "lazysizes": "^4.1.1",
     "lodash-es": "^4.17.4",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "shopify-buy": "^1.11.0"
   }
 }
