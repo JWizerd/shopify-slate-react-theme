@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Slate Starter theme that's less opinionated and allows for React development.",
+    "theme_name": "react slate starter",
     "theme_version": "1.0.0",
-    "theme_author": "Shopify Inc., Jeremiah Wodke, Liron Navon",
-    "theme_documentation_url": "",
-    "theme_support_url": ""
+    "theme_author": "Shopify Inc.",
+    "theme_documentation_url": "https://jeremiahwodke.com",
+    "theme_support_url": "https://github.com/JWizerd/shopify-slate-react-theme"
   },
   {
     "name": "Colors",
