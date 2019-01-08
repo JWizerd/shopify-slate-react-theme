@@ -27,6 +27,7 @@ class Collection extends Component {
     render() {
         return (
             <div>
+                <h1>React Collections</h1>
                 <Products products={this.state.products} />
             </div>
         );
